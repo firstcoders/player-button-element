@@ -12,6 +12,10 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sound-ws/player-button-element.git"
+  },
   "exports": {
     ".": "./index.js",
     "./soundws-player-button.js": "./soundws-player-button.js"
