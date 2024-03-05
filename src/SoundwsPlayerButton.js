@@ -1,4 +1,5 @@
 import { html, css, LitElement } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import * as icons from './assets/icons.js';
 
 /**
@@ -41,8 +42,12 @@ export class SoundwsPlayerButton extends LitElement {
           outline: none;
         }
 
-        button:hover {
+        button:hover:not([disabled]) {
           opacity: 1;
+        }
+
+        button:disabled {
+          opacity: 0.5;
         }
 
         svg {
@@ -56,11 +61,16 @@ export class SoundwsPlayerButton extends LitElement {
     return {
       type: { type: String },
       label: { type: String },
+      disabled: { type: Boolean },
     };
   }
 
   render() {
-    return html`<button type="button" aria-label=${this.label || this.type}>
+    return html`<button
+      disabled=${ifDefined(this.disabled)}
+      type="button"
+      aria-label=${this.label || this.type}
+    >
       <span aria-hidden="true">${icons[this.type]}</span>
     </button>`;
   }
