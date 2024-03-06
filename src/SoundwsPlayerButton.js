@@ -1,5 +1,4 @@
 import { html, css, LitElement } from 'lit';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import * as icons from './assets/icons.js';
 
 /**
@@ -67,7 +66,7 @@ export class SoundwsPlayerButton extends LitElement {
 
   render() {
     return html`<button
-      disabled=${ifDefined(this.disabled)}
+      ?disabled=${this.disabled}
       type="button"
       aria-label=${this.label || this.type}
     >
